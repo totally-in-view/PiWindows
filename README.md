@@ -1,6 +1,6 @@
 # PiWindows
 https://github.com/JoshuaWise/better-sqlite3/blob/master/docs/troubleshooting.md
-PiWindows
+
 
 *****************************************************************************************************************************
 TIV Pi Hub and Reporting (PiHR like FIHR) Installation Process for windows: NOTE: Make sure you're using nodejs v8.9.4 or later. The target production configuration for Pi is running on Node 10.15.*.
