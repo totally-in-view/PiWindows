@@ -1,0 +1,2088 @@
+[
+	{
+		"type": "Master",
+		"parent": null,
+		"props": [
+			"number",
+			"model"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "WireLink",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "EthernetLink",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "Enclosure",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "ModuleGen2",
+						"props": [
+
+						],
+						"attributes": [
+							"master"
+						],
+						"children": [
+							{
+								"type": "Load",
+								"props": [
+									"loadtype",
+									"contractornumber",
+									"parent",
+									"parentposition"
+
+								],
+								"attributes": [
+									"master"
+                                ],
+                                "mapTo": "VantageLoad"
+							}
+						]
+					},
+					{
+						"type": "Module",
+						"props": [
+
+						],
+						"attributes": [
+							"master"
+						],
+						"children": [
+							{
+								"type": "Load",
+								"props": [
+									"loadtype",
+									"contractornumber",
+									"parent",
+									"parentposition"
+								],
+								"attributes": [
+									"master"
+                                ],
+                                "mapTo": "VantageLoad"
+							}
+						]
+					}
+				]
+			},
+			{
+				"type": "SerialPort",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "RadioLink",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "QubeLink",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "Area",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true,
+		"mapTo": "Area"
+	},
+	{
+		"type": "Category",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "PowerProfile",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "DCPowerProfile",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "PWMPowerProfile",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Schedule",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Script",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "BackBox",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "KeypadStyle",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Keypad",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Button",
+				"props": [
+					"up",
+					"down",
+					"hold",
+					"parent"
+				],
+				"attributes": [
+					"master"
+                ],
+                "mapTo": "VantageScene"
+			}
+		]
+	},
+	{
+		"type": "ButtonStyle",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "LEDStyle",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "DualRelayStation",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Load",
+				"props": [
+					"loadtype",
+					"contractornumber",
+					"parent",
+					"parentposition"
+				],
+				"attributes": [
+					"master"
+                ],
+                "mapTo": "VantageLoad"
+			},
+			{
+				"type": "Button",
+				"props": [
+					"up",
+					"down",
+					"hold"
+				],
+				"attributes": [
+					"master"
+				],
+                "mapTo": "VantageScene"
+			}
+		]
+	},
+	{
+		"type": "ScenePointRelay",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Load",
+				"props": [
+					"loadtype",
+					"contractornumber",
+					"parent",
+					"parentposition"
+				],
+				"attributes": [
+					"master"
+				],
+                "mapTo": "VantageLoad"
+			},
+			{
+				"type": "Button",
+				"props": [
+					"up",
+					"down",
+					"hold",
+					"parent"
+				],
+				"attributes": [
+					"master"
+				],
+                "mapTo": "VantageScene"
+			}
+		]
+	},
+	{
+		"type": "Enclosure",
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"children": [
+			{
+				"type": "ModuleGen2",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "Load",
+						"props": [
+							"loadtype",
+							"contractornumber",
+							"parent",
+							"parentposition"
+						],
+						"attributes": [
+							"master"
+						],
+                        "mapTo": "VantageLoad"
+					}
+				]
+			}
+		]
+	},
+	{
+		"type": "PowerStation",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Load",
+				"props": [
+					"loadtype",
+					"contractornumber",
+					"parent",
+					"parentposition"
+				],
+				"attributes": [
+					"master"
+				],
+                "mapTo": "VantageLoad"
+			}
+		]
+	},
+	{
+		"type": "Task",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Thermostat",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+        ],
+        "mapTo": "VantageHVAC",
+		"deepest": false,
+		"children": [
+			{
+				"type": "DryContact",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "Temperature",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "Dimmer",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Load",
+				"props": [
+					"loadtype",
+					"contractornumber",
+					"parent",
+					"parentposition"
+				],
+				"attributes": [
+					"master"
+				],
+                "mapTo": "VantageLoad"
+			},
+			{
+				"type": "Button",
+				"props": [
+					"up",
+					"down",
+					"hold",
+					"parent"
+				],
+				"attributes": [
+					"master"
+				],
+                "mapTo": "VantageScene"
+			}
+		]
+	},
+	{
+		"type": "LVOSPWM",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Load",
+				"props": [
+					"loadtype",
+					"contractornumber",
+					"parent",
+					"parentposition"
+				],
+				"attributes": [
+					"master"
+				],
+                "mapTo": "VantageLoad"
+			},
+			{
+				"type": "DryContact",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "LightSensor",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "EqCtrlStyle",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "EqCtrl",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Button",
+				"props": [
+					"up",
+					"down",
+					"hold",
+					"parent"
+				],
+				"attributes": [
+					"master"
+				],
+                "mapTo": "VantageScene"
+			}
+		]
+	},
+	{
+		"type": "Preset",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Legrand.LMDI-100_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Legrand.DLM_Loads_CHILD",
+				"props": [
+					"parent"
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "Load",
+						"props": [
+							"loadtype",
+							"contractornumber",
+							"parent",
+							"parentposition"
+						],
+						"attributes": [
+							"master"
+						],
+                        "mapTo": "VantageLoad"
+					}
+				]
+			},
+			{
+				"type": "Legrand.DLM_Scenes_CHILD",
+				"props": [
+					"parent"
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "Legrand.DLM_Switches_CHILD",
+				"props": [
+					"parent"
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "Legrand.DLM_Sensors_CHILD",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "Legrand.DLM_Motion_Sensor_CHILD",
+						"props": [
+							"serialnumber",
+							"occupancytask",
+							"vacancytask"
+						],
+						"attributes": [
+							"master"
+						]
+					}
+				]
+			},
+			{
+				"type": "Legrand.DLM_Sensors_CHILD",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "Legrand.DLM_Light_Sensor_CHILD",
+						"props": [
+							"serialnumber"
+						],
+						"attributes": [
+							"master"
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"type": "IRX2",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "SerialPort",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "IRReceiver",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "Load",
+				"props": [
+					"loadtype",
+					"contractornumber",
+					"parent",
+					"parentposition"
+				],
+				"attributes": [
+					"master"
+				],
+                "mapTo": "VantageLoad"
+			},
+			{
+				"type": "DryContact",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "Apple.AppleTv_IR",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "Sharp.PN-L702B_IR",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "EqUXStyle",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "EqUX",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Button",
+				"props": [
+					"up",
+					"down",
+					"hold",
+					"parent"
+				],
+				"attributes": [
+					"master"
+				],
+                "mapTo": "VantageScene"
+			}
+		]
+	},
+	{
+		"type": "User",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Weather",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Module",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Timer",
+		"parent": null,
+		"props": [
+			"time"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "BACnetDevice",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Load",
+		"parent": null,
+		"props": [
+			"loadtype",
+			"contractornumber",
+			"parent",
+			"parentposition"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true,
+        "mapTo": "VantageLoad"
+	},
+	{
+		"type": "Vantage.DMM",
+		"parent": null,
+		"props": [
+			"hostname"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Vantage.DMMStream",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "SerialPort",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "DINContactInput",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "DryContact",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "MockLCD",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Button",
+				"props": [
+					"up",
+					"down",
+					"hold",
+					"parent"
+				],
+				"attributes": [
+					"master"
+				],
+                "mapTo": "VantageScene"
+			},
+			{
+				"type": "TemperatureWidget",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "TextWidget",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "TPT",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Button",
+				"props": [
+					"up",
+					"down",
+					"hold",
+					"parent"
+				],
+				"attributes": [
+					"master"
+				],
+                "mapTo": "VantageScene"
+			},
+			{
+				"type": "TemperatureWidget",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "TextWidget",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "TV_One.C2-6104A_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "TV_One.Window_CHILD",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "Sierra_Video._x31_616V5S_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Samsung._x34_00UX-2_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "GMem",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "TcpClientPort",
+		"parent": null,
+		"props": [
+			"port",
+			"ipaddress"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Gefen.EXT-DVIKDM-841DL_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "DinEnclosure",
+		"parent": null,
+		"props": [
+			"dinmodules"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "BrightSign.HD410_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Somfy.Sonesse_30_RS485_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Somfy.Shades_CHILD",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "Somfy.Sonesse_Shade_CHILD",
+						"props": [
+							"nodeid"
+						],
+						"attributes": [
+							"master"
+                        ],
+                        "mapTo": "VantageShade"
+					}
+				]
+			},
+			{
+				"type": "Somfy.Shade_Groups_CHILD",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "Somfy.Shade_Group_CHILD",
+						"props": [
+							"nodeid"
+						],
+						"attributes": [
+							"master"
+						],
+						"mapTo": "VantageShade"
+					}
+				]
+			}
+		]
+	},
+	{
+		"type": "Sanyo.PLC-XU106_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "NEC.PA600X_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Vantage.SwitcherStack",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Vantage.StaticSource",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "Vantage.850Switcher",
+				"props": [
+					"serialnumber",
+					"bus"
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "Vantage.Zone",
+						"props": [
+
+						],
+						"attributes": [
+							"master"
+						],
+						"children": [
+							{
+								"type": "Vantage.DynamicSource",
+								"props": [
+
+								],
+								"attributes": [
+									"master"
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"type": "Vantage.InternalSource",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "Mitsubishi.XD550U_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Color_Kinetics.iPlayer_2_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "SliderWidget",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "IRZone",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Button",
+				"props": [
+					"up",
+					"down",
+					"hold",
+					"parent"
+				],
+				"attributes": [
+					"master"
+				],
+                "mapTo": "VantageScene"
+			}
+		]
+	},
+	{
+		"type": "Sharp.Aquos_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Christie.Brio_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Nuvo.System",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Nuvo.Player",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "Nuvo.Zone",
+						"props": [
+							"ipaddress"
+						],
+						"attributes": [
+							"master"
+						],
+						"children": [
+							{
+								"type": "Nuvo.Port",
+								"props": [
+									"ipaddress"
+								],
+								"attributes": [
+									"master"
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"type": "Nuvo.Source",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "Nuvo.StreamingSource",
+				"props": [
+					"hostname"
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "Nuvo.BlueToothSource",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "Nuvo.Gateway",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "Nuvo.Player",
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"children": [
+			{
+				"type": "Nuvo.Zone",
+				"props": [
+					"ipaddress"
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "Nuvo.Port",
+						"props": [
+							"ipaddress"
+						],
+						"attributes": [
+							"master"
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"type": "ScientificAtlantic.8300HD_IR",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "DINControllerPowerSupply",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "DINLVOSPWM",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Load",
+				"props": [
+					"loadtype",
+					"contractornumber",
+					"parent",
+					"parentposition"
+				],
+				"attributes": [
+					"master"
+				],
+                "mapTo": "VantageLoad"
+			},
+			{
+				"type": "DryContact",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "LoadGroup",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "RS232Station",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "SerialPort",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "MechoShade.IQ2_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "MechoShade.IQ2_Zone_CHILD",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "MechoShade.IQ2_Group_CHILD",
+						"props": [
+
+						],
+						"attributes": [
+							"master"
+						],
+						"children": [
+							{
+								"type": "MechoShade.IQ2_Shade_Node_CHILD",
+								"props": [
+
+								],
+								"attributes": [
+									"master"
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"type": "Kramer.VS-44HN_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Kramer.VS-44_x2F_88HN_Zones_CHILD",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "Kramer.Zone_CHILD",
+						"props": [
+
+						],
+						"attributes": [
+							"master"
+						],
+						"children": [
+							{
+								"type": "Kramer.Current_Source_CHILD",
+								"props": [
+
+								],
+								"attributes": [
+									"master"
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"type": "Kramer.VS-44_x2F_88HN_Sources_CHILD",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "Kramer.Source_CHILD",
+						"props": [
+
+						],
+						"attributes": [
+							"master"
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"type": "DisplayConfiguration",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "GenericDevice",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Somfy.RS-485_SDN_2_x2E_0_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Somfy.RS-485_Group_CHILD",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "Somfy.RS-485_Shade_CHILD",
+						"props": [
+							"nodeid"
+						],
+						"attributes": [
+							"master"
+                        ],
+                        "mapTo":"VantageShade"
+					}
+				]
+			}
+		]
+	},
+	{
+		"type": "LCS.Modbus_HVAC_PORT",
+		"parent": null,
+		"props": [
+			"port",
+			"slaveid"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "LCS.Modbus_HVAC_Thermostat_CHILD",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "Temperature",
+						"props": [
+
+						],
+						"attributes": [
+							"master"
+						]
+					}
+				],
+				"mapTo": "VantageHVAC"
+			}
+		]
+	},
+	{
+		"type": "WireLink",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "ModuleGen2",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "OmniSensor",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "TheatrePoint",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "SerialPort",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "IRReceiver",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "DryContact",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "DINDimmer",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "DryContact",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "Jandy.AquaLinkRS_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "Jandy.Aqualink_RS_Auxiliaries_CHILD",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			},
+			{
+				"type": "Jandy.Aqualink_RS_Pool_CHILD",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "Jandy.Aqualink_RS_Temperature_CHILD",
+						"props": [
+
+						],
+						"attributes": [
+							"master"
+						]
+					}
+				]
+			},
+			{
+				"type": "Jandy.Aqualink_RS_Spa_CHILD",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "Jandy.Aqualink_RS_Pump_CHILD",
+						"props": [
+
+						],
+						"attributes": [
+							"master"
+						]
+					},
+					{
+						"type": "Jandy.Aqualink_RS_Heater_CHILD",
+						"props": [
+
+						],
+						"attributes": [
+							"master"
+						]
+					},
+					{
+						"type": "Jandy.Aqualink_RS_Setpoint_CHILD",
+						"props": [
+
+						],
+						"attributes": [
+							"master"
+						]
+					},
+					{
+						"type": "Jandy.Aqualink_RS_Temperature_CHILD",
+						"props": [
+
+						],
+						"attributes": [
+							"master"
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"type": "Gefen.4x4_HDMI_Matrix_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "QMotion.ZigBee_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "QMotion.ZigBee_Group_CHILD",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "QMotion.ZigBee_Shade_CHILD",
+						"props": [
+
+						],
+						"attributes": [
+							"master"
+                        ],
+                        "mapTo": "VantageShade"
+					}
+				]
+			}
+		]
+	},
+	{
+		"type": "IRReceiver",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "DryContact",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "LCD320C5",
+		"parent": null,
+		"props": [
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "DSC.IT-100_PORT",
+		"parent": null,
+		"props": [
+			"port"
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": false,
+		"children": [
+			{
+				"type": "DSC.IT-100_SecurityPartitions_CHILD",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				],
+				"children": [
+					{
+						"type": "DSC.IT-100_SecurityPartition_CHILD",
+						"props": [
+
+						],
+						"attributes": [
+							"master"
+						],
+						"children": [
+							{
+								"type": "DSC.Keypad_CHILD",
+								"props": [
+
+								],
+								"attributes": [
+									"master"
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"type": "Vantage.Password_CHILD",
+				"props": [
+
+				],
+				"attributes": [
+					"master"
+				]
+			}
+		]
+	},
+	{
+		"type": "UserGroup",
+		"parent": null,
+		"props": [
+
+		],
+		"attributes": [
+			"master"
+		],
+		"deepest": true
+	},
+	{
+		"type": "Vantage.DmxDaliGateway",
+		"parent": null,
+		"props": [
+			"ipaddress",
+			"serialnumber",
+			"bus"
+		],
+		"attributes": [
+			"master"
+		],
+		"children": [
+			{
+				"type": "Load",
+				"props": [
+					"loadtype",
+					"contractornumber",
+					"parent",
+					"parentposition"
+				],
+				"attributes": [
+					"master"
+				],
+				"mapTo": "VantageLoad"
+			}
+		]
+	}
+]

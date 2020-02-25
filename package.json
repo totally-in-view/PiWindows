@@ -1,0 +1,131 @@
+{
+  "name": "pi",
+  "version": "0.11.0",
+  "private": true,
+  "author": "TIV",
+  "description": "PI 0.11.0",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "better-sqlite3": "^5.4.1",
+    "chart.js": "^2.7.3",
+    "csv": "^5.1.1",
+    "electron-is-dev": "^1.0.1",
+    "global": "^4.3.2",
+    "js-base64": "^2.5.1",
+    "jszip": "^3.2.1",
+    "konva": "^3.4.1",
+    "node-schedule": "^1.3.2",
+    "query-string": "^6.8.2",
+    "react": "^16.5.0",
+    "react-chartjs-2": "^2.7.4",
+    "react-dom": "^16.5.0",
+    "react-json-view": "^1.19.1",
+    "react-konva": "^16.8.7-3",
+    "react-native": "^0.60.4",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^3.0.1",
+    "react-three-fiber": "^2.2.13",
+    "react-zdog": "^1.0.10",
+    "redux": "^4.0.0",
+    "redux-first-router": "^2.0.1",
+    "redux-first-router-link": "^1.4.2",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
+    "roundround": "^0.2.0",
+    "sizeof": "^1.0.0",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.1.1",
+    "sql": "^0.78.0",
+    "telnet-client": "^0.15.8",
+    "telnet-stream": "^1.0.4",
+    "three": "^0.106.2",
+    "toasted-notes": "^2.1.5",
+    "typescript": "^3.2.4",
+    "uuid": "^3.3.2",
+    "vinyl-sourcemaps-apply": "^0.2.1",
+    "write": "^1.0.3",
+    "xlsx": "^0.14.1",
+    "xml2js": "^0.4.19",
+    "zdog": "^1.1.0"
+  },
+  "main": "public/electron.js",
+  "homepage": ".",
+  "scripts": {
+    "start": "react-scripts start",
+    "electron": "electron . -i",
+    "electron-dev": "concurrently \"BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-dev-win": "concurrently \"cross-env BROWSER=none && npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-start": "node src/react",
+    "react-start": "BROWSER=none react-scripts start",
+    "pack": "build --dir",
+    "dist": "npm run build && build",
+    "build": "react-scripts build && gulp obfuscate",
+    "test": "mocha test test\\app.test.js",
+    "eject": "react-scripts eject",
+    "rebuild": "electron-rebuild -f -w",
+    "electron-pack": "build -c.extraMetadata.main=build/electron.js",
+    "postinstall": "electron-builder install-app-deps",
+    "preelectron-pack": "npm run build",
+    "postelectron-pack": "npm run rebuild better-sqlite3",
+    "scrape": "nodemon pdf-scraper.js"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "concurrently": "^4.1.0",
+    "cross-env": "^5.2.0",
+    "electron": "^4.1.4",
+    "electron-builder": "^20.38.5",
+    "electron-devtools-installer": "^2.2.4",
+    "electron-react-devtools": "^0.5.3",
+    "electron-rebuild": "^1.8.4",
+    "electron-reload": "^1.4.0",
+    "gulp": "^4.0.2",
+    "gulp-javascript-obfuscator": "^1.1.5",
+    "gulp-minify": "^3.1.0",
+    "minify": "^4.1.1",
+    "mocha": "^6.2.0",
+    "nodemon": "^1.19.0",
+    "pdfkit": "^0.9.1",
+    "spectron": "^6.0.0",
+    "terser": "^3.14.1",
+    "wait-on": "^3.2.0"
+  },
+  "build": {
+    "appId": "com.pi.totallyinview",
+    "compression": "store",
+    "asar": false,
+    "npmRebuild": true,
+    "electronVersion": "4.0.3",
+    "mac": {
+      "target": [
+        {
+          "target": "pkg"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis"
+        }
+      ],
+      "icon": "build\\assets\\icons\\win\\icon.ico"
+    },
+    "files": [
+      "node_modules/**/*",
+      "build/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

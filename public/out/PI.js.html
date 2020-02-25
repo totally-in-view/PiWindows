@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: PI.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: PI.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const Telnet = require("telnet-client");
+/**
+ * @function inspectInstance
+ * @param {object} instance 
+ * @description Gathers relevant information for an instance. In the case of Vantage, this will include ethernetInfo, systemInfo and a channel number in the form of serialized XML strings
+ */
+async function inspectInstance(instance = null){
+    let inspection = {
+        ethernetInfo: null,
+        systemInfo: null,
+        channel: null,
+        version: null
+    }
+    if(instance == null){
+        return null;
+    }
+    else if(instance.service == "Telnet"){
+        let socket = new Telnet();
+
+        socket.connect({
+            host: instance.address,
+            port: 2001,
+            sendTimeout: 5000
+        });
+        
+        let etheRes = "";
+        let sysRes = "";
+        let channelRes = "";
+        let versionRes = "";
+        etheRes = await socket.send("&lt;IDiagnostic>&lt;GetEthernetInfo>&lt;call>&lt;/call>&lt;/GetEthernetInfo>&lt;/IDiagnostic>");
+        channelRes = await socket.send("&lt;IConfiguration>&lt;GetM2MChannel>&lt;call>&lt;/call>&lt;/GetM2MChannel>&lt;/IConfiguration>");
+        sysRes = await socket.send("&lt;IIntrospection>&lt;GetSysInfo>&lt;call>&lt;/call>&lt;/GetSysInfo>&lt;/IIntrospection>");
+        versionRes = await socket.send("&lt;IIntrospection>&lt;GetVersion>&lt;call>&lt;/call>&lt;/GetVersion>&lt;/IIntrospection>")
+        inspection = {
+            id: instance.id,
+            ethernetInfo: etheRes,
+            systemInfo: sysRes,
+            channel: channelRes,
+            versionRes: versionRes
+        }
+    }
+    
+    return inspection;
+}
+
+/**
+ * @function convertVantageResponseToPhoenixResponse
+ * @param {string} res 
+ * @description Takes a string response from vantage processor and tries to convert it to a PI response. If it can't, it will just return the response.
+ */
+function convertVantageResponseToPhoenixResponse(res){
+    res = res.replace("S:", "").replace("R:", "").replace("GETLOAD", "LOAD")
+              .replace("THERMTEMP", "HVAC").replace("BLIND", "SHADE").replace("TEMP", "HVAC")
+              .replace("GETBLIND", "SHADE").replace(" POS ", "")
+              .replace("INDOOR", "ROOM").replace("BTNPRESS", "SCENE");
+    if(!res.includes("LOAD") &amp;&amp; !res.includes("HVAC") &amp;&amp; !res.includes("SHADE") &amp;&amp; !res.includes("SCENE")){
+        return res
+    }else{
+        var response = res.split(" ");
+        let phoenixResponse = `vantage${response[0].toLowerCase()}`;
+        for(var i = 1; i &lt; response.length; i++){
+            let pRes = response[i];
+            if(Number.isNaN(parseInt(pRes))){
+                phoenixResponse += `_${pRes.toLowerCase()}`
+            }else{
+                phoenixResponse += `_${pRes}`
+            }
+        }
+        return phoenixResponse
+    }
+}
+
+/**
+ * @function DriverFactory
+ * @param {object} driver 
+ * @desc Takes a PI Driver and Creates Runtime Operational Device.
+ * @returns {object}
+ */
+function DriverFactory(driver){
+    driver.functions.forEach((funct)=>{
+        var temporaryFunction = new Function(funct.params, funct.body);
+
+        driver[funct.name] = temporaryFunction.bind(driver);
+    })
+
+    return driver;
+}
+
+/**
+ * @function APIReader
+ * @param {string} apiCall
+ * @description Converts PI API Call into object to use
+ * @returns {object} 
+ */
+function APIReader(apiCall){
+    var callArr = apiCall.split("_");
+
+    return {
+        type: callArr[0],
+        id: callArr[1],
+        func: callArr[2],
+        params: callArr.slice(3)
+    }
+}
+/**
+ * @funciton alterInstanceTable
+ * @param {Database} database 
+ * @param {object} file 
+ * @param {object} instance
+ *  
+ */
+function alterInstanceTable(database = null, file, instance){
+    let cols = [];
+    let rows = [];
+
+    let index = file.instances.findIndex((fileInstance)=>{
+        return fileInstance.id == instance.id
+    })
+    file.instances[index] = instance;
+    return file;
+}
+
+module.exports = {
+    inspectInstance: inspectInstance,
+    convertVantage: convertVantageResponseToPhoenixResponse,
+    DriverFactory: DriverFactory,
+    APIReader: APIReader,
+    alterInstanceTable: alterInstanceTable
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#alterInstanceTable">alterInstanceTable</a></li><li><a href="global.html#APIReader">APIReader</a></li><li><a href="global.html#convertVantageResponseToPhoenixResponse">convertVantageResponseToPhoenixResponse</a></li><li><a href="global.html#DriverFactory">DriverFactory</a></li><li><a href="global.html#inspectInstance">inspectInstance</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Feb 07 2019 16:18:24 GMT-0500 (Eastern Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

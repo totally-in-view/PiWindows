@@ -1,0 +1,718 @@
+{
+    "drivers": [
+        {
+            "props": {
+                "name": "Default Name",
+                "area": "Default Area",
+                "id": 0,
+                "instanceId": 0,
+                "instanceAlias": "",
+                "level": 0,
+                "min": 0,
+                "max": 100,
+                "type": "Load",
+                "alias": "Light",
+                "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0,
+                    "w": 0
+                },
+                "webService": "",
+                "path": ""
+            },
+            "functions": [
+                {
+                    "name": "on",
+                    "params": [],
+                    "body": "this.props.level = this.props.max",
+                    "method": ""
+                },
+                {
+                    "name": "off",
+                    "params": [],
+                    "body": "this.props.level = this.props.min"
+                },
+                {
+                    "name": "trimMin",
+                    "params": [
+                        "level"
+                    ],
+                    "body": "this.props.min = level",
+                    "method": ""
+                },
+                {
+                    "name": "trimMax",
+                    "params": [
+                        "level"
+                    ],
+                    "body": "this.props.max = level",
+                    "method": ""
+                },
+                {
+                    "name": "status",
+                    "params": [],
+                    "body": "",
+                    "method": ""
+                }
+            ]
+        },
+        {
+            "props": {
+                "name": "Default Name",
+                "area": "Default Area",
+                "instanceId": 0,
+                "instanceAlias": "",
+                "id": 0,
+                "level": 0,
+                "min": 0,
+                "max": 100,
+                "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0,
+                    "w": 0
+                },
+                "type": "VantageLoad",
+                "alias": "Light",
+                "webService": "Telnet",
+                "path": "",
+                "widget": "LightingWidget"
+            },
+            "functions": [
+                {
+                    "name": "on",
+                    "params": [],
+                    "body": "this.props.level = this.props.max\n\t return `LOAD ${this.props.id} ${this.props.level}\r\n`",
+                    "widget": "Button",
+                    "method": ""
+                },
+                {
+                    "name": "off",
+                    "params": [],
+                    "body": "this.props.level = this.props.min\n\treturn `LOAD ${this.props.id} ${this.props.level}\r\n`;",
+                    "widget": "Button",
+                    "method": ""
+                },
+                {
+                    "name": "trimMin",
+                    "params": [
+                        "level"
+                    ],
+                    "body": "this.props.min = level",
+                    "widget": "",
+                    "method": ""
+                },
+                {
+                    "name": "trimMax",
+                    "params": [
+                        "level"
+                    ],
+                    "body": "this.props.max = level",
+                    "widget": "",
+                    "method": ""
+                },
+                {
+                    "name": "status",
+                    "params": [],
+                    "body": "return `GETLOAD ${this.props.id}\r\n`",
+                    "widget": "onLoad",
+                    "method": ""
+                },
+                {
+                    "name": "toggle",
+                    "params": [],
+                    "body": "if(this.props.level > 0){\n\t this.off()\n }\n else { this.on()}",
+                    "method": "",
+                    "widget": ""
+                },
+                {
+                    "name": "dimmable",
+                    "params": [
+                        "newLevel"
+                    ],
+                    "body": "this.props.level = newLevel\n return `LOAD ${this.props.id} ${this.props.level}\r\n`",
+                    "widget": "Slider",
+                    "method": ""
+                }
+            ]
+        },
+        {
+            "props": {
+                "name": "Default Name",
+                "area": "Default Area",
+                "instanceAlias": "",
+                "id": 0,
+                "instanceId": 0,
+                "roomTemp": 70,
+                "coolSet": 75,
+                "heatSet": 65,
+                "type": "HVAC",
+                "alias": "Thermostat",
+                "webService": "",
+                "path": ""
+            },
+            "functions": [
+                {
+                    "name": "adjustRoomTemperature",
+                    "params": [
+                        "temp"
+                    ],
+                    "body": "this.props.roomTemp = temp",
+                    "widgets": []
+                },
+                {
+                    "name": "adjustCoolSetpoint",
+                    "params": [
+                        "temp"
+                    ],
+                    "body": "this.props.coolSet = temp",
+                    "widgets": []
+                },
+                {
+                    "name": "adjustHeatSetpoint",
+                    "params": [
+                        "temp"
+                    ],
+                    "body": "this.props.heatSet = temp",
+                    "widgets": []
+                }
+            ]
+        },
+        {
+            "props": {
+                "name": "Default Name",
+                "area": "Default Area",
+                "instanceAlias": "",
+                "id": 0,
+                "instanceId": 0,
+                "level": 0,
+                "min": 0,
+                "max": 100,
+                "type": "PhillipsHueLoad",
+                "alias": "Color Light",
+                "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0,
+                    "w": 0
+                },
+                "webService": "REST",
+                "path": ""
+            },
+            "functions": [
+                {
+                    "name": "on",
+                    "params": [],
+                    "body": "this.props.level = this.props.max\nthis.props.path=`/${this.props.id}/state`;\n\nreturn {on: true, bri: this.props.level*2.54};\n",
+                    "method": "PUT"
+                },
+                {
+                    "name": "off",
+                    "params": [],
+                    "body": "this.props.level = this.props.min\nthis.props.path=`/${this.props.id}/state`;\n\nreturn {on: false};\n",
+                    "method": "PUT"
+                },
+                {
+                    "name": "trimMin",
+                    "params": [
+                        "level"
+                    ],
+                    "body": "this.props.min = level",
+                    "method": ""
+                },
+                {
+                    "name": "trimMax",
+                    "params": [
+                        "level"
+                    ],
+                    "body": "this.props.max = level",
+                    "method": ""
+                },
+                {
+                    "name": "status",
+                    "params": [],
+                    "body": "\nthis.props.path=`/${this.props.id}`;\n",
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "props": {
+                "name": "Default Name",
+                "area": "Default Area",
+                "instanceAlias": "",
+                "id": 0,
+                "instanceId": 0,
+                "level": 0,
+                "min": 0,
+                "max": 100,
+                "type": "PhillipsHue_ALPHA",
+                "alias": "Color Light",
+                "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0,
+                    "w": 0
+                },
+                "webService": "REST",
+                "path": ""
+            },
+            "functions": [
+                {
+                    "name": "on",
+                    "params": [],
+                    "body": "this.props.level = this.props.max\nthis.props.path=`/${this.props.id}/state`;\n\nreturn {on: true, bri: this.props.level*2.54};\n",
+                    "method": "PUT",
+                    "widget": "Button"
+                },
+                {
+                    "name": "off",
+                    "params": [],
+                    "body": "this.props.level = this.props.min\nthis.props.path=`/${this.props.id}/state`;\n\nreturn {on: false};\n",
+                    "method": "PUT",
+                    "widget": "Button"
+                },
+                {
+                    "name": "trimMin",
+                    "params": [
+                        "level"
+                    ],
+                    "body": "this.props.min = level",
+                    "method": ""
+                },
+                {
+                    "name": "trimMax",
+                    "params": [
+                        "level"
+                    ],
+                    "body": "this.props.max = level",
+                    "method": ""
+                },
+                {
+                    "name": "status",
+                    "params": [],
+                    "body": "\nthis.props.path=`/${this.props.id}`;\n",
+                    "method": "GET"
+                },
+                {
+                    "name": "dimmable",
+                    "params": [
+                        "newLevel"
+                    ],
+                    "body": "this.props.level=newLevel;\nthis.props.path=`/${this.props.id}/state`;\nreturn {on: true, bri: this.props.level * 2.54}",
+                    "method": "PUT",
+                    "widget": "Slider"
+                },
+                {
+                    "name": "rgb",
+                    "params": [
+                        "r",
+                        "g",
+                        "b"
+                    ],
+                    "body": "this.props.color={r: r, g: g, b: b}\nvar red = (this.props.color.r > 0.04045) ? Math.pow((this.props.color.r + 0.055) / (1.0 + 0.055), 2.4) : (this.props.color.r / 12.92);var green = (this.props.color.g > 0.04045) ? Math.pow((this.props.color.g + 0.055) / (1.0 + 0.055), 2.4) : (this.props.color.g / 12.92);\nvar blue = (this.props.color.b > 0.04045) ? Math.pow((this.props.color.b + 0.055) / (1.0 + 0.055), 2.4) : (this.props.color.b / 12.92);\nvar X, Y, Z;\nX = red * 0.664511 + green * 0.154324 + blue * 0.162028;\nY = red * 0.283881 + green * 0.668433 + blue * 0.047685;\nZ = red * 0.000088 + green * 0.072310 + blue * 0.986039;\nvar x = X/(X + Y + Z);\nvar y = Y/(X + Y + Z);\nthis.props.path=`/${this.props.id}`;\nreturn{xy: [x, y]}",
+                    "method": "PUT",
+                    "widget": "ColorWheel"
+                }
+            ]
+        },
+        {
+            "props": {
+                "name": "Default Name",
+                "area": "Default Area",
+                "instanceAlias": "",
+                "id": 0,
+                "coolId": 0,
+                "heatId": 0,
+                "roomId": 0,
+                "instanceId": 0,
+                "roomTemp": 21,
+                "coolSet": 23,
+                "heatSet": 18,
+                "type": "VantageHVAC",
+                "alias": "Thermostat",
+                "webService": "Telnet",
+                "path": "",
+                "widget": "HVACWidget"
+            },
+            "functions": [
+                {
+                    "name": "adjustRoomTemperature",
+                    "params": [
+                        "temp"
+                    ],
+                    "body": "this.props.roomTemp = temp\nreturn `THERMTEMP ${this.props.id} INDOOR ${this.props.roomTemp}\r\n`;\n",
+                    "method": "",
+                    "widget": "Slider"
+                },
+                {
+                    "name": "adjustCoolSetpoint",
+                    "params": [
+                        "temp"
+                    ],
+                    "body": "this.props.coolSet = temp\nreturn `THERMTEMP ${this.props.id} COOL ${this.props.coolSet}\r\n`;\n",
+                    "method": "",
+                    "widget": "CoolSetText"
+                },
+                {
+                    "name": "adjustHeatSetpoint",
+                    "params": [
+                        "temp"
+                    ],
+                    "body": "this.props.heatSet = temp\nreturn `THERMTEMP ${this.props.id} HEAT ${this.props.heatSet}\r\n`;\n",
+                    "method": "",
+                    "widget": "HeatSetText"
+                },
+                {
+                    "name": "status",
+                    "params":["type"],
+                    "body": "return `GETTHERMTEMP ${this.props.id} ${type}\r\n`"
+                }
+            ]
+        },
+        {
+            "props": {
+                "name": "Default Name",
+                "area": "Default Area",
+                "instanceAlias": "",
+                "id": 0,
+                "instanceId": 0,
+                "type": "Scene",
+                "alias": "Scene",
+                "active": false,
+                "webService": "",
+                "path": "",
+                "widget": "SceneButton",
+                "phantom": false
+            },
+            "functions": [
+                {
+                    "name": "toggleScene",
+                    "params": [],
+                    "body": "this.props.active = !this.props.active",
+                    "method": "",
+                    "widget": "SceneButton"
+                }
+            ]
+        },
+        {
+            "props": {
+                "name": "Default Name",
+                "area": "Default Area",
+                "instanceAlias": "",
+                "id": 0,
+                "instanceId": 0,
+                "type": "VantageScene",
+                "alias": "Scene",
+                "active": false,
+                "webService": "",
+                "path": "",
+                "widget": "SceneButton",
+                "phantom": false
+            },
+            "functions": [
+                {
+                    "name": "toggleScene",
+                    "params": [],
+                    "body": "this.props.active = !this.props.active\n switch(this.props.active){\n\tcase true:\n\treturn `BTNPRESS ${this.props.id}\r\n`;\n case false:\n\treturn `BTNRELEASE ${this.props.id}\r\n`;\n default:\n\tbreak;\n}",
+                    "method": "",
+                    "widget": "SceneButton"
+                },
+                {
+                    "name":"status",
+                    "params": [],
+                    "body":"return `GETLED ${this.props.id}\r\n`;",
+                    "method": "",
+                    "widget":""
+                }
+            ]
+        },
+        {
+            "props": {
+                "name": "Default Name",
+                "area": "Default Area",
+                "instanceAlias": "",
+                "id": 0,
+                "instanceId": 0,
+                "type": "Shade",
+                "alias": "Shade",
+                "level": 0,
+                "widget": "",
+                "webService": "",
+                "path": ""
+            },
+            "functions": [
+                {
+                    "name": "open",
+                    "params": [],
+                    "body": "this.props.level = 100",
+                    "method": "",
+                    "widget": ""
+                },
+                {
+                    "name": "close",
+                    "params": [],
+                    "body": "this.props.level = 0",
+                    "method": "",
+                    "widget": ""
+                },
+                {
+                    "name": "pos",
+                    "params": [],
+                    "body": "this.props.level = 100",
+                    "method": "",
+                    "widget": ""
+                }
+            ]
+        },
+        {
+            "props": {
+                "name": "Default Name",
+                "area": "Default Area",
+                "instanceAlias": "",
+                "id": 0,
+                "instanceId": 0,
+                "type": "VantageShade",
+                "alias": "Shade",
+                "level": 0,
+                "widget": "ShadeWidget",
+                "webService": "Telnet",
+                "path": ""
+            },
+            "functions": [
+                {
+                    "name": "open",
+                    "params": [],
+                    "body": "this.props.level = 100\nreturn `BLIND ${this.props.id} OPEN\r\n`;\n",
+                    "widget": "Button"
+                },
+                {
+                    "name": "close",
+                    "params": [],
+                    "body": "this.props.level = 0\n\nreturn `BLIND ${this.props.id} CLOSE\r\n`;\n",
+                    "widget": "Button"
+                },
+                {
+                    "name": "pos",
+                    "params": [
+                        "newLevel"
+                    ],
+                    "body": "this.props.level = newLevel\nreturn `BLIND ${this.props.id} POS ${this.props.level}\r\n`;\n",
+                    "widget": "Shade"
+                }
+            ]
+        },
+        {
+            "props": {
+                "name": "Default Name",
+                "area": "Default Area",
+                "instanceAlias": "",
+                "id": 0,
+                "instanceId": 0,
+                "level": 0,
+                "min": 0,
+                "max": 100,
+                "type": "VantageColorLoad",
+                "alias": "Color Light",
+                "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0,
+                    "w": 0
+                },
+                "webService": "Telnet",
+                "path": ""
+            },
+            "functions": [
+                {
+                    "name": "on",
+                    "params": [],
+                    "body": "this.props.level = this.props.max\nreturn `LED ${this.props.id} 255 255 255\\r\\n`;\n",
+                    "method": "",
+                    "widget": "Button"
+                },
+                {
+                    "name": "off",
+                    "params": [],
+                    "body": "this.props.level = this.props.min\nreturn `LED ${this.props.id} 0 0 0\\r\\n`;\n",
+                    "method": "",
+                    "widget": "Button"
+                },
+                {
+                    "name": "trimMin",
+                    "params": [
+                        "level"
+                    ],
+                    "body": "this.props.min = level",
+                    "method": "",
+                    "widget": ""
+                },
+                {
+                    "name": "trimMax",
+                    "params": [
+                        "level"
+                    ],
+                    "body": "this.props.max = level",
+                    "method": "",
+                    "widget": ""
+                },
+                {
+                    "name": "status",
+                    "params": [],
+                    "body": "",
+                    "method": "",
+                    "widget": ""
+                },
+                {
+                    "name": "rgb",
+                    "params": [
+                        "r",
+                        "g",
+                        "b"
+                    ],
+                    "body": "this.props.color = {...this.props.color, r: r, g: g, b: b}\nreturn `LED ${this.props.id} ${this.props.color.r} ${this.props.color.g} ${this.props.color.b}\\r\\n`",
+                    "method": "",
+                    "widget": "ColorWheel"
+                }
+            ]
+        },
+        {
+            "props": {
+                "name": "Default Name",
+                "area": "Default Area",
+                "instanceAlias": "",
+                "id": 0,
+                "instanceId": 0,
+                "roomTemp": 70,
+                "coolSet": 75,
+                "heatSet": 65,
+                "type": "LutronHVAC",
+                "alias": "Thermostat",
+                "webService": "",
+                "path": ""
+            },
+            "functions": [
+                {
+                    "name": "adjustRoomTemperature",
+                    "params": [
+                        "temp"
+                    ],
+                    "body": "this.props.roomTemp = temp\n return `#HVAC,${this.props.id},1,${temp}\r\n`",
+                    "widgets": []
+                },
+                {
+                    "name": "adjustCoolSetpoint",
+                    "params": [
+                        "temp"
+                    ],
+                    "body": "this.props.coolSet = temp\nreturn `#HVAC,${this.props.id},3,3,${temp}\r\n`",
+                    "widgets": []
+                },
+                {
+                    "name": "adjustHeatSetpoint",
+                    "params": [
+                        "temp"
+                    ],
+                    "body": "this.props.heatSet = temp\n return `#HVAC,${this.props.id},,${temp}\r\n`",
+                    "widgets": []
+                },
+                {
+                    "name": "status",
+                    "params": ["type"],
+                    "body": "",
+                    "widgets": []
+                }
+            ]
+        },
+        
+        
+        
+        {
+            "props": {
+                "name": "Default Name",
+                "area": "Default Area",
+                "instanceAlias": "",
+                "id": 0,
+                "instanceId": 0,
+                "level": 0,
+                "min": 0,
+                "max": 100,
+                "type": "LIFX",
+                "alias": "Color Light",
+                "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0,
+                    "w": 0
+                },
+                "webService": "REST",
+                "path": ""
+            },
+            "functions": [
+                {
+                    "name": "on",
+                    "params": [],
+                    "body": "this.props.level = this.props.max\nthis.props.path=`/${this.props.id}/state`;\n\nreturn {on: true, bri: this.props.level*2.54};\n",
+                    "method": "PUT",
+                    "widget": "Button"
+                },
+                {
+                    "name": "off",
+                    "params": [],
+                    "body": "this.props.level = this.props.min\nthis.props.path=`/${this.props.id}/state`;\n\nreturn {on: false};\n",
+                    "method": "PUT",
+                    "widget": "Button"
+                },
+                {
+                    "name": "trimMin",
+                    "params": [
+                        "level"
+                    ],
+                    "body": "this.props.min = level",
+                    "method": ""
+                },
+                {
+                    "name": "trimMax",
+                    "params": [
+                        "level"
+                    ],
+                    "body": "this.props.max = level",
+                    "method": ""
+                },
+                {
+                    "name": "status",
+                    "params": [],
+                    "body": "\nthis.props.path=`/${this.props.id}`;\n",
+                    "method": "GET"
+                },
+                {
+                    "name": "dimmable",
+                    "params": [
+                        "newLevel"
+                    ],
+                    "body": "this.props.level=newLevel;\nthis.props.path=`/${this.props.id}/state`;\nreturn {on: true, bri: this.props.level * 2.54}",
+                    "method": "PUT",
+                    "widget": "Slider"
+                },
+                {
+                    "name": "rgb",
+                    "params": [
+                        "r",
+                        "g",
+                        "b"
+                    ],
+                    "body": "this.props.color={r: r, g: g, b: b}\nvar red = (this.props.color.r > 0.04045) ? Math.pow((this.props.color.r + 0.055) / (1.0 + 0.055), 2.4) : (this.props.color.r / 12.92);var green = (this.props.color.g > 0.04045) ? Math.pow((this.props.color.g + 0.055) / (1.0 + 0.055), 2.4) : (this.props.color.g / 12.92);\nvar blue = (this.props.color.b > 0.04045) ? Math.pow((this.props.color.b + 0.055) / (1.0 + 0.055), 2.4) : (this.props.color.b / 12.92);\nvar X, Y, Z;\nX = red * 0.664511 + green * 0.154324 + blue * 0.162028;\nY = red * 0.283881 + green * 0.668433 + blue * 0.047685;\nZ = red * 0.000088 + green * 0.072310 + blue * 0.986039;\nvar x = X/(X + Y + Z);\nvar y = Y/(X + Y + Z);\nthis.props.path=`/${this.props.id}`;\nreturn{xy: [x, y]}",
+                    "method": "PUT",
+                    "widget": "ColorWheel"
+                }
+            ]
+        }
+    ]
+}

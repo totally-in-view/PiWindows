@@ -1,0 +1,125 @@
+<html>
+    <head>
+        <title>Background Process</title>
+        <script type="text/javascript">
+            let worker = {
+                process: null,
+                ids: [],
+                instances: []
+            };
+            const {ipcRenderer, ProcessMetric} = require('electron');
+            const path = require("path");
+            // Send logs as messages to the main thread to show on the console
+            function log(value) {
+                ipcRenderer.send('to-main', process.pid + ': ' + value);
+            }
+            // let the main thread know this thread is ready to process something
+            function ready() {
+                ipcRenderer.send('ready', process.pid)
+            }
+
+            function setupWorkerListeners(){
+                    worker.onmessage = (e)=>{
+                       console.log(e);
+                    }
+            }
+            // do some work that will tie up the processor for a while
+            function work() {
+                // see https://gist.github.com/tkrueger/3500612 for generating load
+                var start = new Date().getTime()
+                var result = 0
+                var finished = false
+                while(!finished) {
+                    result += Math.random() * Math.random()
+                    finished = new Date().getTime() > start + 10000
+                }
+            }
+            // if message is received, pass it back to the renderer via the main thread
+            ipcRenderer.on('test', (event, arg) => {
+                ipcRenderer.send("test", process.pid)
+            });
+
+            ipcRenderer.on("get-info", async (event, args)=>{
+                let mem = await process.getProcessMemoryInfo();
+                let heap = await process.getHeapStatistics();
+                let cpu = await process.getCPUUsage();
+
+                let pid = process.pid;
+                ipcRenderer.send("process-info", { pid, mem: heap});
+            })
+
+            ipcRenderer.on("start-diagnostics", (event, args)=>{
+                process.title = "Pi Diagnostics Process"
+                worker.process = new Worker(path.join(__dirname, "diagnostics.js"));
+                worker.ids = ["diagnostics"];
+            })
+
+            ipcRenderer.on("start-analytics", (event, args)=>{
+                process.title = "Pi Analytics Process"
+                worker.ids = ["analytics"]
+            })
+
+            ipcRenderer.on('start-instance', (event, args) => {
+
+                process.title = "Pi Instance Process"
+                if(worker.process == null){
+                    worker.process = new Worker(path.join(__dirname, "instance.js"));
+                }
+                if(args.instance != null){
+                    if(worker.ids.indexOf(args.instance.id) < 0){
+                        worker.ids.push(args.instance.id);
+                        worker.instances.push(args.instance);
+                    }
+                }
+                    let message = {
+                        event: "start-instance",
+                        instance: args.instance, 
+                        db: args.db, 
+                        socket: args.socket, 
+                        diagnosticSocket: args.diagnosticSocket, 
+                        helperSocket: args.helperSocket, 
+                        analyticsSocket: args.analyticsSocket
+                    }
+                    worker.process.postMessage(message)
+                    setupWorkerListeners();
+            })
+            
+            ipcRenderer.on("write-to-instance", (event, args)=>{
+                let message = {
+                    event: "write-to-instance",
+                    command: args
+                }
+                worker.process.postMessage(message);
+            })
+
+            ipcRenderer.on("restart-instance", (event, args)=>{
+                let message = {
+                    event: "restart-instance",
+                    ...args
+                }
+            })
+            
+            ipcRenderer.on("delete-instance", (event, args)=>{
+                let message = {
+                    event: "delete-instance",
+                    ...args
+                }
+            })
+
+            ipcRenderer.on("close", (event, args)=>{
+                    try{
+                        worker.process.terminate();
+                        worker.process = null;
+                    }catch(err){
+                        let fs = require("fs");
+                        fs.writeFileSync(path.join(__dirname, `bg-process-${worker.id}.txt`), err);
+                    }
+                // process.kill(process.pid);
+            })
+            ready()
+        </script>
+    </head>
+    <body>
+        <h1>YOU SHOULDN'T BE HERE</h1>
+    </body>
+</html>
