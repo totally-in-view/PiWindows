@@ -24,3 +24,30 @@ n 10.16.0 ************ changing to a specific version
 *****************************************************************************************************************************
 Front End developers For front-end development, the team is using the Brave browser with extensions (vs Chrome or Firefox)
 Download brave browser Add React dev ext and redux tools for UI Development.....
+
+
+*****************************************************************************************************************************
+Git Large Files Storage
+EXAMPLE:
+
+git init repo
+
+git lfs install
+
+git lfs track "*.psd"
+
+git add .gitattributes
+
+
+Last step your normal git flow:
+
+git add file.psd
+git commit -m "Add design file"
+git push origin master
+
+
+
+
+
+******************************************************************************************************************************
+
