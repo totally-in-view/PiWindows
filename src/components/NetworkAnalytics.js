@@ -13,7 +13,7 @@ export default class NetworkAnalytics extends React.Component{
             currentPage: 1
         }
     }
-    componentWillReceiveProps(nextProps){
+    UNSAFE_componentWillReceiveProps(nextProps){
         nextProps.socket.emit("get-network-devices", nextProps.instance);
     }
     componentDidMount(){

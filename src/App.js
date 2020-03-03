@@ -547,7 +547,7 @@ class App extends Component {
 					<div className="row">
 						<div className="col-sm-12">
 							<p style={{color:"#fff", fontSize: "10px", lineHeight: "12px"}}>PI&trade;<br/>
- This software, including all functionality, graphics and user interfaces, is proprietary and owned or exclusively licensed by Totally In View, Inc. The PI&trade; mark is either a trademark or registered trademark owned or exclusively licensed by Totally In View, Inc. © Copyright 2019, all rights reserved. Proprietary information is contained within this demonstration and confidentiality is required in order to access this presentation and the information contained herein. Access is provided for demonstration only.</p>
+ This software, including all functionality, graphics and user interfaces, is proprietary and owned or exclusively licensed by Totally In View, Inc. The PI&trade; mark is either a trademark or registered trademark owned or exclusively licensed by Totally In View, Inc. © Copyright 2020, all rights reserved. Proprietary information is contained within this demonstration and confidentiality is required in order to access this presentation and the information contained herein. Access is provided for demonstration only.</p>
 						</div>
 					</div>
 				</footer>

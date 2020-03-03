@@ -76,7 +76,7 @@ export default class InstanceSettings extends React.Component {
         this.props.socket.off("file-download");
 
     }
-    componentWillReceiveProps(nextProps){
+    UNSAFE_componentWillReceiveProps(nextProps){
         this.instanceRefs = [];
 
         nextProps.instances.forEach((instance)=>{
@@ -117,7 +117,7 @@ export default class InstanceSettings extends React.Component {
                 case "service":
                     instance.service = cell.firstChild.value
                     cell.firstChild.value = "";
-                    if(instance.service == "Vantage"){
+                    if(instance.service === "Vantage"){
                         instance.service = "Telnet";
                         instance.port = 3001;
                     }
@@ -128,7 +128,7 @@ export default class InstanceSettings extends React.Component {
                     break;
                 case "aliases":
                     instance.aliases = cell.innerText.split(", ");
-                    if(instance.aliases[0] == ""){
+                    if(instance.aliases[0] === ""){
                         instance.aliases = [];
                     }
                     cell.innerText = "";
@@ -172,7 +172,7 @@ export default class InstanceSettings extends React.Component {
                     break;
                 case "service":
                     instance.service = cell.firstChild.value
-                    if(instance.service == "Vantage"){
+                    if(instance.service === "Vantage"){
                         instance.service = "Telnet"
                         instance.port = 3001
                     }
@@ -183,7 +183,7 @@ export default class InstanceSettings extends React.Component {
                     break;
                 case "aliases":
                     instance.aliases = cell.innerText.split(", ");
-                    if(instance.aliases[0] == ""){
+                    if(instance.aliases[0] === ""){
                         instance.aliases = [];
                     }
                     break;
@@ -227,7 +227,7 @@ export default class InstanceSettings extends React.Component {
     }
 
     download(instance){
-        if(instance.service.toLowerCase() == "telnet" && instance.port == "3001" || instance.service.toLowerCase() == "vantage"){
+        if(instance.service.toLowerCase() === "telnet" && instance.port === "3001" || instance.service.toLowerCase() === "vantage"){
             this.props.socket.emit("download-file", instance);
         }else{
             this.props.socket.emit("download-file", instance);
@@ -256,7 +256,7 @@ export default class InstanceSettings extends React.Component {
                                         <td id="address" className="editable-col" contentEditable>{instance.address}</td>
                                         <td id="port" className="editable-col" contentEditable>3001</td>
                                         {((instance)=>{
-                                            if(instance.service == "Vantage" || (instance.service == "Telnet" && instance.port == 3001)){
+                                            if(instance.service === "Vantage" || (instance.service === "Telnet" && instance.port === 3001)){
                                                 return (
                                                     
                                                     <td id="service" className="editable-col" contentEditable>

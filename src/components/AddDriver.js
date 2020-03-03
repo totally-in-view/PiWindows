@@ -33,7 +33,7 @@ export default class AddDriver extends React.Component {
         }
     }
 
-    componentWillReceiveProps(nextProps){
+    UNSAFE_componentWillReceiveProps(nextProps){
     }
     componentDidMount(){
       this.props.socket.emit("ui-drivers-request");

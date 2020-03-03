@@ -27,7 +27,7 @@ export default class Form extends React.Component{
         }
     }
 
-    componentWillReceiveProps(nextProps){
+    UNSAFE_componentWillReceiveProps(nextProps){
         console.log(nextProps)
     }
     handleSelectChange(key, event){

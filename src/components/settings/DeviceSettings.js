@@ -13,9 +13,9 @@ export default class DeviceSettings extends React.Component {
         }
     }
     shouldComponentUpdate(nextProps, nextState){
-        return this.state.devices != nextState.devices
+        return this.state.devices !== nextState.devices
     }
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
         this.props.socket.on("updated-file", (file)=>{
             this.props.updateFile(file);
         })
@@ -34,7 +34,7 @@ export default class DeviceSettings extends React.Component {
             })
         })
     }
-    componentWillReceiveProps(nextProps){
+    UNSAFE_componentWillReceiveProps(nextProps){
         this.deviceRefs = [];
         // nextProps.devices.forEach((device)=>{
         //     this.deviceRefs.push(React.createRef());
@@ -73,7 +73,7 @@ export default class DeviceSettings extends React.Component {
                     let instance = cell.firstChild.value;
                     this.props.instances.forEach((piInstance)=>{
                         piInstance.aliases.forEach((alias)=>{
-                            if(`${piInstance.name} - ${alias}` == instance){
+                            if(`${piInstance.name} - ${alias}` === instance){
                                 device.props.instanceId = piInstance
                                 device.props.instanceAlias = alias
                             }

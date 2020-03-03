@@ -17,7 +17,7 @@ export default class DiagnoseDevices extends React.Component {
             modalOpen: false
         }
     }
-    componentWillReceiveProps(nextProps){
+    UNSAFE_componentWillReceiveProps(nextProps){
         nextProps.socket.emit("get-diagnostics", nextProps.instance);
     }
     componentDidMount(){

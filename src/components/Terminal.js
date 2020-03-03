@@ -16,7 +16,7 @@ export default class Terminal extends React.Component {
             sidebarHidden: false
         }
     }
-    componentWillReceiveProps(nextProps){
+    UNSAFE_componentWillReceiveProps(nextProps){
         this.setState({
             instances: nextProps.instances
         })
@@ -132,7 +132,7 @@ export default class Terminal extends React.Component {
         let mainView;
         let sideView;
         let analyticsAction = <span title="Network Analytics" onClick={this.analytics.bind(this)} style={{fontSize: "25px"}} className="fa fa-line-chart font-button"></span>
-        if(this.props.permissions.toLowerCase() != "analytics" && this.props.permissions.toLowerCase() !== "admin"){
+        if(this.props.permissions.toLowerCase() !== "analytics" && this.props.permissions.toLowerCase() !== "admin"){
             analyticsAction = null
         }
         if(this.state.mainContentView === "logs"){

@@ -19,7 +19,7 @@ export default class Instance extends React.Component{
         }
     }
 
-    componentWillReceiveProps(nextProps){
+    UNSAFE_componentWillReceiveProps(nextProps){
         if(this.props.id !== nextProps.id){
             let params = queryString.parse(nextProps.location.search);
             nextProps.socket.emit("get-instance-devices-from-db", {id: nextProps.id, alias: nextProps.alias}, params.area);

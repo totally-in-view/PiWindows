@@ -46,7 +46,7 @@ export default class EventCreator extends React.Component {
         }
         }
     }
-    componentWillReceiveProps(nextProps){
+    UNSAFE_componentWillReceiveProps(nextProps){
         this.setState({
             event: {
                 type: "weekly",

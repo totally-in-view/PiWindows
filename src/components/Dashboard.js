@@ -24,7 +24,7 @@ export default class Dashboard extends React.Component {
         }
     }
     
-    componentWillReceiveProps(nextProps){
+    UNSAFE_componentWillReceiveProps(nextProps){
         let file = nextProps.file;
 
         file.instances.forEach((instance)=>{

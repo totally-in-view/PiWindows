@@ -13,7 +13,7 @@ class Sidebar extends React.Component {
     componentDidMount(){
     }
 
-    componentWillReceiveProps(nextProps){
+    UNSAFE_componentWillReceiveProps(nextProps){
         // console.log(nextProps.listitems)
         // this.props.addItems(nextProps.listitems);
 

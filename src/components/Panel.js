@@ -8,7 +8,7 @@ export default class Panel extends React.Component {
             body: this.props.body,
         }
     }
-        componentWillReceiveProps(nextProps){
+    UNSAFE_componentWillReceiveProps(nextProps){
             this.setState({
                 header: nextProps.header,
                 body: nextProps.body
